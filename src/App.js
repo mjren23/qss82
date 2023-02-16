@@ -7,11 +7,11 @@ import {
 import Home from './components/Home';
 import About from './components/About';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home fireBaseApp={props.fireBaseApp}/>} />
         <Route path="/about" element = {<About/>} />
       </Routes>
     </BrowserRouter>

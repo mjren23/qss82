@@ -13,5 +13,5 @@ and then
 
 ```npm start``` 
 
-to see the website. 
+to see the website hosted on localhost:3000. 
 

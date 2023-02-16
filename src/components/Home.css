@@ -1,0 +1,16 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 800px;
+  min-height: 100%;
+}
+
+.main {
+  justify-content: flex-start;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}

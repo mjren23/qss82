@@ -1,0 +1,24 @@
+.QuestionAnswer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.button-unselected {
+  border-style: solid;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
+
+.button-selected {
+  border-style: solid;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  background-color: rgb(9, 176, 222);
+}

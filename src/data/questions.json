@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "questionText": "How concerned are you about the effect of climate change on droughts?",
+    "dataFilePath": "drought_2010.csv",
+    "answerOptions": [
+      "Not at all concerned",
+      "Slightly concerned",
+      "Very concerned"
+    ],
+    "variants": [
+      {
+        "variantId": 1,
+        "saveResponsePath": "responses/drought/var_1/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 2,
+        "saveResponsePath": "responses/drought/var_2/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 3,
+        "saveResponsePath": "responses/drought/var_3/responseCounts",
+        "saveInteractionsPath": ""
+      }
+    ]
+  }
+]

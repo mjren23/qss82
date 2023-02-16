@@ -1,0 +1,10 @@
+.VisualizationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.btn-submit {
+  margin-top: 20px;
+}
