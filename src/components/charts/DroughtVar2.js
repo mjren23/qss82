@@ -17,7 +17,7 @@ function DroughtVar2(props) {
         </linearGradient>
       </defs>
       <XAxis dataKey="ValidEnd" reversed={true} />
-      <YAxis type='number' domain={[0, 100]}/>
+      <YAxis type='number' domain={[0, 50]}/>
       <CartesianGrid strokeDasharray="3 3" />
       <Area type="monotone" dataKey="D3" stroke="#f0931a" fillOpacity={1} fill="url(#colorD3)" />
       <Area type="monotone" dataKey="D4" stroke="#f0244d" fillOpacity={1} fill="url(#colorD4)" />

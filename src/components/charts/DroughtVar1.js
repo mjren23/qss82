@@ -13,7 +13,7 @@ function DroughtVar1(props) {
       <Line type="monotone" stroke="#f0244d"  dataKey="D4" dot={false}/>
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey="ValidEnd" reversed={true}/>
-      <YAxis type="number" domain={[0, 100]} />
+      <YAxis type="number" domain={[0, 50]} />
       <Legend />
     </LineChart>
   );

@@ -11,7 +11,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "NO_API_KEY_LEAK",
+  apiKey: "AIzaSyDhchhLNIXbydQVKDX9FvUhsuUGce8wayg",
   authDomain: "qss82-67ffc.firebaseapp.com",
   projectId: "qss82-67ffc",
   storageBucket: "gs://qss82-67ffc.appspot.com",

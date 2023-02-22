@@ -25,5 +25,86 @@
         "saveInteractionsPath": ""
       }
     ]
+  },
+  {
+    "id": 2,
+    "questionText": "On a scale of 1-5, how would you rate the professionalism of this graph?",
+    "dataFilePath": "salary_position.csv",
+    "answerOptions": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "variants": [
+      {
+        "variantId": 1,
+        "saveResponsePath": "responses/soccer/var_1/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 2,
+        "saveResponsePath": "responses/soccer/var_2/responseCounts",
+        "saveInteractionsPath": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "questionText": "Which MLS team had the highest paid player in 2017?",
+    "dataFilePath": "mls-salaries-2017.csv",
+    "answerOptions": [
+      "CHI",
+      "ORL",
+      "SEA",
+      "LA",
+      "YCFC"
+    ],
+    "variants": [
+      {
+        "variantId": 1,
+        "saveResponsePath": "responses/soccer_2017/var_1/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 2,
+        "saveResponsePath": "responses/soccer_2017/var_2/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 3,
+        "saveResponsePath": "responses/soccer_2017/var_3/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 4,
+        "saveResponsePath": "responses/soccer_2017/var_4/responseCounts",
+        "saveInteractionsPath": ""
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "questionText": "As a rough estimate, how much did the average forward earn in 2016?",
+    "dataFilePath": "salary_position.csv",
+    "answerOptions": [
+      "45,000",
+      "50,000",
+      "57,500",
+      "60,000"
+    ],
+    "variants": [
+      {
+        "variantId": 1,
+        "saveResponsePath": "responses/soccer_2/var_1/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 2,
+        "saveResponsePath": "responses/soccer_2/var_2/responseCounts",
+        "saveInteractionsPath": ""
+      }
+    ]
   }
 ]

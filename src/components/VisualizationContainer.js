@@ -5,11 +5,18 @@ import Button from 'react-bootstrap/Button';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useState, useEffect, useRef } from 'react';
 import Papa from 'papaparse';
-import { doc, updateDoc, increment, getFirestore } from "firebase/firestore";
+import { doc, setDoc, updateDoc, increment, getFirestore, getDoc } from "firebase/firestore";
 import DroughtVar1 from './charts/DroughtVar1';
 import DroughtVar2 from './charts/DroughtVar2';
 import DroughtVar3 from './charts/DroughtVar3';
+import SoccerVar1 from './charts/SoccerVar1';
+import SoccerVar2 from './charts/SoccerVar2';
+import Soccer2017Var1 from './charts/Soccer2017Var1';
+import Soccer2017Var2 from './charts/Soccer2017Var2';
+import Soccer2017Var3 from './charts/Soccer2017Var3';
+import Soccer2017Var4 from './charts/Soccer2017Var4';
 import QuestionContainer from './QuestionContainer';
+
 
 
 function VisualizationContainer(props) {
@@ -22,6 +29,7 @@ function VisualizationContainer(props) {
   const [currentQuestionVariant, setCurrentQuestionVariant] = useState(null);
   const [noMoreQuestions, setNoMoreQuestions] = useState(false);
   const unseenQuestions = useRef(null);
+  const timeStarted = useRef(new Date());
   // const currentQuestion = useRef(null);
 
   const storage = getStorage();
@@ -35,6 +43,7 @@ function VisualizationContainer(props) {
     if (unseenQuestions.current == null) {
       return;
     }
+    timeStarted.current = new Date();
     loadNextQuestion();
   }, [unseenQuestions]);
 
@@ -68,6 +77,10 @@ function VisualizationContainer(props) {
       return;
     }
 
+    // get time spent on question 
+    const endTime = new Date().getTime();
+    const spentTime =(endTime - timeStarted.current.getTime())/1000;
+
     // remove from unseen 
     const index = unseenQuestions.current.indexOf(currentQuestion);
     if (index > -1) { 
@@ -80,8 +93,24 @@ function VisualizationContainer(props) {
       [response]: increment(1),
     }).then((response) => {
       console.log("submitted response");
+      timeStarted.current = new Date();
       loadNextQuestion();
     });
+
+    // submit time to firebasedb 
+    const timeDocRef = doc(db, currentQuestionVariant.saveResponsePath.slice(0, (currentQuestionVariant.saveResponsePath.length - 14)) + "timeSpent");
+    const docSnap = await getDoc(timeDocRef);
+
+    if (docSnap.exists()) {
+      const array = docSnap.data()['seconds'];
+      array.push(spentTime);
+      await setDoc(timeDocRef, {
+        seconds: array,
+      });
+    } else {
+      console.log("No such document!");
+    }
+    
   }
 
   const loadNextQuestion = () => {
@@ -89,7 +118,7 @@ function VisualizationContainer(props) {
       setNoMoreQuestions(true);
       return;
     }
-    const nextQuestion = getRandomArrayElement(unseenQuestions.current);
+    const nextQuestion = getRandomArrayElement(unseenQuestions.current); // CHANGE THIS TO FORCE DISPLAY A CHART 
     setCurrentQuestion(nextQuestion);
     setCurrentQuestionVariant(getRandomArrayElement(nextQuestion.variants));
     setCurrentQuestionAnswers(nextQuestion.answerOptions);
@@ -97,7 +126,7 @@ function VisualizationContainer(props) {
   }
 
   const getChartComponent = (chartData) => {
-    if (currentQuestion == null || currentQuestionVariant == null) {
+    if (currentQuestion == null || currentQuestionVariant == null || chartData == null) {
       return (<p>Loading...</p>);
     }
     switch(currentQuestion.id) {
@@ -112,12 +141,52 @@ function VisualizationContainer(props) {
           default:
             return (<DroughtVar1 data={chartData}></DroughtVar1>);
         }
+      case 2:
+        switch (currentQuestionVariant.variantId) {
+          case 1:
+            return (<SoccerVar1 data={chartData}></SoccerVar1>);
+          default: 
+            return (<SoccerVar1 data={chartData}></SoccerVar1>);
+        }
+        // switch (currentQuestionVariant.variantId) {
+        //   case 1:
+        //     return (<SoccerVar1 data={chartData}></SoccerVar1>);
+        //   case 2:
+        //     return (<SoccerVar2 data={chartData}></SoccerVar2>);
+        //   default: 
+        //     return (<SoccerVar1 data={chartData}></SoccerVar1>);
+        // }
+      case 3:
+        switch (currentQuestionVariant.variantId) {
+          case 1:
+            return (<Soccer2017Var1 data={chartData}></Soccer2017Var1>);
+          case 2:
+            return (<Soccer2017Var2 data={chartData}></Soccer2017Var2>);
+          case 3:
+              return (<Soccer2017Var3 data={chartData}></Soccer2017Var3>);
+          case 4:
+              return (<Soccer2017Var4 data={chartData}></Soccer2017Var4>);
+          default: 
+            return (<Soccer2017Var1 data={chartData}></Soccer2017Var1>);
+      }
+      case 4:
+        switch (currentQuestionVariant.variantId) {
+          case 1:
+            return (<SoccerVar1 data={chartData}></SoccerVar1>);
+          case 2:
+            return (<SoccerVar2 data={chartData}></SoccerVar2>);
+          default: 
+            return (<SoccerVar1 data={chartData}></SoccerVar1>);
+        }
       default:
         return (<DroughtVar1 data={chartData}></DroughtVar1>);
     }
   }
 
-  const getRandomArrayElement = (array) => {
+  const getRandomArrayElement = (array, forceQuestion=false, questionIndex=null, isQuestion=true) => {
+    if (forceQuestion && isQuestion) {
+      return array[questionIndex];
+    }
     return array[Math.floor(Math.random()*array.length)];
   }
 

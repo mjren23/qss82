@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './QuestionContainer.css';
 import QuestionAnswer from './QuestionAnswer';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function QuestionContainer(props) {
   const questionText = props.questionText;
