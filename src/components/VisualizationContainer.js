@@ -115,6 +115,8 @@ function VisualizationContainer(props) {
 
   const loadNextQuestion = () => {
     if (unseenQuestions.current.length === 0) {
+      // scroll to top
+      window.scrollTo(0, 0);
       setNoMoreQuestions(true);
       return;
     }
@@ -123,6 +125,9 @@ function VisualizationContainer(props) {
     setCurrentQuestionVariant(getRandomArrayElement(nextQuestion.variants));
     setCurrentQuestionAnswers(nextQuestion.answerOptions);
     setCurrentQuestionText(nextQuestion.questionText);
+
+    // scroll to top
+    window.scrollTo(0, 0);
   }
 
   const getChartComponent = (chartData) => {
@@ -145,17 +150,11 @@ function VisualizationContainer(props) {
         switch (currentQuestionVariant.variantId) {
           case 1:
             return (<SoccerVar1 data={chartData}></SoccerVar1>);
+          case 2:
+            return (<SoccerVar2 data={chartData}></SoccerVar2>)
           default: 
             return (<SoccerVar1 data={chartData}></SoccerVar1>);
         }
-        // switch (currentQuestionVariant.variantId) {
-        //   case 1:
-        //     return (<SoccerVar1 data={chartData}></SoccerVar1>);
-        //   case 2:
-        //     return (<SoccerVar2 data={chartData}></SoccerVar2>);
-        //   default: 
-        //     return (<SoccerVar1 data={chartData}></SoccerVar1>);
-        // }
       case 3:
         switch (currentQuestionVariant.variantId) {
           case 1:

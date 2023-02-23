@@ -6,6 +6,10 @@ function Soccer2017Var4(props) {
   const data = props.data;
 
   const barColors = ["#d11a17", "#1429b3", '#ffffff']
+
+  if (data == null) {
+    return (<div></div>);
+  }
   
   return (
     <div>
@@ -18,7 +22,7 @@ function Soccer2017Var4(props) {
         <CartesianGrid strokeDasharray="3 3"/>
         <XAxis dataKey="club" interval={0} tick={<CustomAxisTick></CustomAxisTick>}/>
         <YAxis domain={[0, 7500000]} tickCount={6}>
-          <Label value="Highest salary paid" position='insideLeft' offset={-50} angle='-90'/>
+          <Label value="Highest salary paid" position='insideLeft' offset={-50} angle='-90' style={{ textAnchor: 'middle' }}/>
         </YAxis>
         <Bar dataKey="max_salary" stroke="#000000" strokeWidth={2} >
           {

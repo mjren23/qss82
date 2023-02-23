@@ -13,7 +13,7 @@ function Soccer2017Var2(props) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="club" interval={0} tick={<CustomAxisTick></CustomAxisTick>}/>
         <YAxis domain={[0, 7500000]} tickCount={6}>
-          <Label value="Highest salary paid" position='insideLeft' offset={-50} angle='-90'/>
+          <Label value="Highest salary paid" position='insideLeft' offset={-50} angle='-90' style={{ textAnchor: 'middle' }}/>
         </YAxis>
         <Tooltip></Tooltip>
         <Bar dataKey="max_salary" fill="#8884d8" />
