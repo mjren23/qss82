@@ -16,6 +16,10 @@ import Soccer2017Var2 from './charts/Soccer2017Var2';
 import Soccer2017Var3 from './charts/Soccer2017Var3';
 import Soccer2017Var4 from './charts/Soccer2017Var4';
 import QuestionContainer from './QuestionContainer';
+import ResponseTimesVar1 from './charts/ResponseTimesVar1';
+import ResponseTimesVar2 from './charts/ResponseTimesVar2';
+import ResponseTimesVar3 from './charts/ResponseTimesVar3';
+import ResponseTimesVar4 from './charts/ResponseTimesVar4';
 
 
 
@@ -176,6 +180,19 @@ function VisualizationContainer(props) {
             return (<SoccerVar2 data={chartData}></SoccerVar2>);
           default: 
             return (<SoccerVar1 data={chartData}></SoccerVar1>);
+        }
+      case 5:
+        switch (currentQuestionVariant.variantId) {
+          case 1:
+            return (<ResponseTimesVar1 data={chartData}></ResponseTimesVar1>);
+          case 2:
+            return (<ResponseTimesVar2 data={chartData}></ResponseTimesVar2>);
+          case 3:
+            return (<ResponseTimesVar3 data={chartData}></ResponseTimesVar3>);
+          case 4:
+            return (<ResponseTimesVar4 data={chartData}></ResponseTimesVar4>);
+          default: 
+            return (<ResponseTimesVar1 data={chartData}></ResponseTimesVar1>);
         }
       default:
         return (<DroughtVar1 data={chartData}></DroughtVar1>);

@@ -16,6 +16,10 @@ import QuestionContainer from './QuestionContainer';
 import questions from '../data/questions.json';
 import Soccer2017Var3 from './charts/Soccer2017Var3';
 import Soccer2017Var4 from './charts/Soccer2017Var4';
+import ResponseTimesVar1 from './charts/ResponseTimesVar1';
+import ResponseTimesVar2 from './charts/ResponseTimesVar2';
+import ResponseTimesVar3 from './charts/ResponseTimesVar3';
+import ResponseTimesVar4 from './charts/ResponseTimesVar4';
 
 
 
@@ -27,6 +31,7 @@ function ChartTesting(props) {
   const [droughtData, setDroughtData] = useState();
   const [soccerData, setSoccerData] = useState();
   const [positionData, setPositionData] = useState();
+  const [fireData, setFireData] = useState();
 
   useEffect(() => {
     const parsed = JSON.parse(JSON.stringify(questions));
@@ -35,6 +40,7 @@ function ChartTesting(props) {
     const droughtDataPath = parsed[0].dataFilePath;
     const positionDataPath = parsed[1].dataFilePath;
     const soccerDataPath = parsed[2].dataFilePath;
+    const fireDataPath = parsed[4].dataFilePath;
     
     var dataRef = ref(storage, droughtDataPath);
     getDownloadURL(dataRef)
@@ -86,6 +92,23 @@ function ChartTesting(props) {
       .catch((error) => {
 
       });
+
+    dataRef = ref(storage, fireDataPath);
+    getDownloadURL(dataRef)
+      .then((url) => {
+    
+        Papa.parse(url, {
+          header: true,
+          download: true,
+          complete: response => {
+            setFireData(response.data);
+          }
+        });
+        
+      })
+      .catch((error) => {
+
+      });
   }, []);
 
   return(
@@ -99,6 +122,10 @@ function ChartTesting(props) {
       <Soccer2017Var4 data={soccerData}></Soccer2017Var4>
       <SoccerVar1 data={positionData}></SoccerVar1>
       <SoccerVar2 data={positionData}></SoccerVar2>
+      <ResponseTimesVar1 data={fireData}></ResponseTimesVar1>
+      <ResponseTimesVar2 data={fireData}></ResponseTimesVar2>
+      <ResponseTimesVar3 data={fireData}></ResponseTimesVar3>
+      <ResponseTimesVar4 data={fireData}></ResponseTimesVar4>
     </div>
   );
 }
