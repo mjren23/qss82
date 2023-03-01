@@ -2,7 +2,6 @@ import { Bar, CartesianGrid, XAxis, YAxis, BarChart, Label, Cell, LabelList } fr
 import CustomAxisTick from './CustomAxisTick';
 import ImageAxisTick from './ImageAxisTick';
 import mlsLogo from '../../resources/mls_logo.jpg';
-import atl from '../../resources/atlanta.png';
 
 function Soccer2017Var4(props) {
   const data = props.data;

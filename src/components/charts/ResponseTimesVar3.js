@@ -34,7 +34,7 @@ function ResponseTimesVar3(props) {
         <Bar dataKey="First Arriving Travel Time" fill="#7a0420" />
         <Bar dataKey="ERF Travel Time" fill="#c41a1a" />
         <Bar dataKey="First Arriving Total Time" fill="#f28a3a" />
-        <Bar dataKey="ERF Total Time" fill="#f2eb5c" />
+        <Bar dataKey="ERF Total Time" fill="#fad96e" />
         <Legend></Legend>
       </BarChart>
     </div>

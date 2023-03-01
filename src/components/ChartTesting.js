@@ -20,6 +20,9 @@ import ResponseTimesVar1 from './charts/ResponseTimesVar1';
 import ResponseTimesVar2 from './charts/ResponseTimesVar2';
 import ResponseTimesVar3 from './charts/ResponseTimesVar3';
 import ResponseTimesVar4 from './charts/ResponseTimesVar4';
+import ResponseTimesVar5 from './charts/ResponseTimesVar5';
+import TopPaidVar1 from './charts/TopPaidVar1';
+import TopPaidVar2 from './charts/TopPaidVar2';
 
 
 
@@ -32,6 +35,7 @@ function ChartTesting(props) {
   const [soccerData, setSoccerData] = useState();
   const [positionData, setPositionData] = useState();
   const [fireData, setFireData] = useState();
+  const [topPaidData, setTopPaidData] = useState();
 
   useEffect(() => {
     const parsed = JSON.parse(JSON.stringify(questions));
@@ -41,6 +45,7 @@ function ChartTesting(props) {
     const positionDataPath = parsed[1].dataFilePath;
     const soccerDataPath = parsed[2].dataFilePath;
     const fireDataPath = parsed[4].dataFilePath;
+    const topPaidDataPath = parsed[5].dataFilePath;
     
     var dataRef = ref(storage, droughtDataPath);
     getDownloadURL(dataRef)
@@ -109,11 +114,28 @@ function ChartTesting(props) {
       .catch((error) => {
 
       });
+
+    dataRef = ref(storage, topPaidDataPath);
+    getDownloadURL(dataRef)
+      .then((url) => {
+    
+        Papa.parse(url, {
+          header: true,
+          download: true,
+          complete: response => {
+            setTopPaidData(response.data);
+          }
+        });
+        
+      })
+      .catch((error) => {
+
+      });
   }, []);
 
   return(
     <div className="ChartTestingContainer">
-      <DroughtVar1 data={droughtData}></DroughtVar1>
+      {/* <DroughtVar1 data={droughtData}></DroughtVar1>
       <DroughtVar2 data={droughtData}></DroughtVar2>
       <DroughtVar3 data={droughtData}></DroughtVar3>
       <Soccer2017Var1 data={soccerData}></Soccer2017Var1>
@@ -126,6 +148,9 @@ function ChartTesting(props) {
       <ResponseTimesVar2 data={fireData}></ResponseTimesVar2>
       <ResponseTimesVar3 data={fireData}></ResponseTimesVar3>
       <ResponseTimesVar4 data={fireData}></ResponseTimesVar4>
+      <ResponseTimesVar5 data={fireData}></ResponseTimesVar5>
+      <TopPaidVar1 data={topPaidData}></TopPaidVar1> */}
+      <TopPaidVar2 data={topPaidData}></TopPaidVar2>
     </div>
   );
 }

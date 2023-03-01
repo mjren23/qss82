@@ -91,7 +91,7 @@
     "answerOptions": [
       "$450,000",
       "$500,000",
-      "$575,000",
+      "$550,000",
       "$600,000"
     ],
     "variants": [
@@ -142,5 +142,38 @@
         "saveInteractionsPath": ""
       }
     ]
+  },
+  {
+    "id": 6,
+    "questionText": "Who was the highest paid player in the MLS in 2010?",
+    "dataFilePath": "top_paid.csv",
+    "answerOptions": [
+     "Robbie Keane",
+     "Landon Donovan",
+     "David Beckham",
+     "Juan Pablo Angel"
+    ],
+    "variants": [
+      {
+        "variantId": 1,
+        "saveResponsePath": "responses/paid/var_1/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 2,
+        "saveResponsePath": "responses/paid/var_2/responseCounts",
+        "saveInteractionsPath": ""
+      }
+    ],
+    "followUp": {
+      "questionText": "Think back to the last chart you just saw. About how much did the highest earning player in 2010 make?",
+      "answerOptions": [
+        "$7,000,000",
+        "$5,500,000",
+        "$5,000,000",
+        "$6,500,000"
+      ],
+      "saveResponsePath": "responses/followUp/var_2/responseCounts"
+    }
   }
 ]

@@ -1,0 +1,7 @@
+.players {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: space-evenly;
+}

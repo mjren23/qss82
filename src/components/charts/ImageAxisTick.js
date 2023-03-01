@@ -1,5 +1,4 @@
 import { PureComponent } from "react";
-import atl from '../../resources/atlanta.png';
 
 class ImageAxisTick extends PureComponent {
   render() {

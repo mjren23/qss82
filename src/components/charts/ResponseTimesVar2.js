@@ -29,9 +29,9 @@ function ResponseTimesVar2(props) {
         <YAxis dataKey="time" type="number" domain={[0, 800]} tickCount={6} tickFormatter={time => formatTime(time)}>
           <Label value="Minutes" position='insideLeft' offset={-20} angle='-90' style={{ textAnchor: 'middle' }}/>
         </YAxis>
-        <Bar dataKey="Alarm Handling" fill="#f2eb5c" />
-        <Bar dataKey="Turnout Time" fill="#f28a3a" />
-        <Bar dataKey="First Arriving Travel Time" fill="#c41a1a" />
+        <Bar dataKey="Alarm Handling" fill="#f28a3a" />
+        <Bar dataKey="Turnout Time" fill="#c41a1a" />
+        <Bar dataKey="First Arriving Travel Time" fill="#fad96e" />
         <Bar dataKey="ERF Travel Time" fill="#7a0420" />
         <Bar dataKey="First Arriving Total Time" fill="#0a8494" />
         <Bar dataKey="ERF Total Time" fill="#0c375e" />

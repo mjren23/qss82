@@ -20,6 +20,8 @@ import ResponseTimesVar1 from './charts/ResponseTimesVar1';
 import ResponseTimesVar2 from './charts/ResponseTimesVar2';
 import ResponseTimesVar3 from './charts/ResponseTimesVar3';
 import ResponseTimesVar4 from './charts/ResponseTimesVar4';
+import TopPaidVar1 from './charts/TopPaidVar1';
+import TopPaidVar2 from './charts/TopPaidVar2';
 
 
 
@@ -31,6 +33,7 @@ function VisualizationContainer(props) {
   const [currentQuestionText, setCurrentQuestionText] = useState(null);
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState(null);
   const [currentQuestionVariant, setCurrentQuestionVariant] = useState(null);
+  const [askFollowUp, setAskFollowUp] = useState(false);
   const [noMoreQuestions, setNoMoreQuestions] = useState(false);
   const unseenQuestions = useRef(null);
   const timeStarted = useRef(new Date());
@@ -52,7 +55,7 @@ function VisualizationContainer(props) {
   }, [unseenQuestions]);
 
   useEffect(() => {
-    if (currentQuestion != null) {
+    if (currentQuestion != null && currentQuestion.dataFilePath != null) {
       const dataRef = ref(storage, currentQuestion.dataFilePath);
       getDownloadURL(dataRef)
         .then((url) => {
@@ -92,7 +95,11 @@ function VisualizationContainer(props) {
     }
 
     // submit to firebase db 
-    const responseDocRef = doc(db, currentQuestionVariant.saveResponsePath);
+    var responseDocRef = doc(db, currentQuestionVariant.saveResponsePath);
+
+    if (askFollowUp) {
+      responseDocRef = doc(db, "responses/followUp/var_" + currentQuestionVariant.variantId + "/responseCounts");
+    }
     await updateDoc(responseDocRef, {
       [response]: increment(1),
     }).then((response) => {
@@ -102,7 +109,12 @@ function VisualizationContainer(props) {
     });
 
     // submit time to firebasedb 
-    const timeDocRef = doc(db, currentQuestionVariant.saveResponsePath.slice(0, (currentQuestionVariant.saveResponsePath.length - 14)) + "timeSpent");
+    var timeDocRef = doc(db, currentQuestionVariant.saveResponsePath.slice(0, (currentQuestionVariant.saveResponsePath.length - 14)) + "timeSpent");
+
+    if (askFollowUp) {
+      timeDocRef = doc(db, "responses/followUp/var_" + currentQuestionVariant.variantId + "/timeSpent");
+    }
+
     const docSnap = await getDoc(timeDocRef);
 
     if (docSnap.exists()) {
@@ -114,28 +126,39 @@ function VisualizationContainer(props) {
     } else {
       console.log("No such document!");
     }
+
+    setAskFollowUp(false);
     
   }
 
   const loadNextQuestion = () => {
-    if (unseenQuestions.current.length === 0) {
-      // scroll to top
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+    if (askFollowUp) {
+      setData(null);
+      const followUp = currentQuestion.followUp;
+      
+      setCurrentQuestion(followUp);
+      setCurrentQuestionAnswers(followUp.answerOptions);
+      setCurrentQuestionText(followUp.questionText);
+    }
+    else if (unseenQuestions.current.length === 0) {
       setNoMoreQuestions(true);
       return;
     }
-    const nextQuestion = getRandomArrayElement(unseenQuestions.current); // CHANGE THIS TO FORCE DISPLAY A CHART 
-    setCurrentQuestion(nextQuestion);
-    setCurrentQuestionVariant(getRandomArrayElement(nextQuestion.variants));
-    setCurrentQuestionAnswers(nextQuestion.answerOptions);
-    setCurrentQuestionText(nextQuestion.questionText);
-
-    // scroll to top
-    window.scrollTo(0, 0);
+    else {
+      const nextQuestion = getRandomArrayElement(unseenQuestions.current); 
+      setCurrentQuestion(nextQuestion);
+      setCurrentQuestionVariant(getRandomArrayElement(nextQuestion.variants));
+      setCurrentQuestionAnswers(nextQuestion.answerOptions);
+      setCurrentQuestionText(nextQuestion.questionText);
+    }
   }
 
   const getChartComponent = (chartData) => {
     if (currentQuestion == null || currentQuestionVariant == null || chartData == null) {
+      if (chartData == null) {
+        return (<p></p>)
+      }
       return (<p>Loading...</p>);
     }
     switch(currentQuestion.id) {
@@ -193,6 +216,16 @@ function VisualizationContainer(props) {
             return (<ResponseTimesVar4 data={chartData}></ResponseTimesVar4>);
           default: 
             return (<ResponseTimesVar1 data={chartData}></ResponseTimesVar1>);
+        }
+      case 6:
+        if (!askFollowUp) {
+          setAskFollowUp(true);
+        }
+        switch (currentQuestionVariant.variantId) {
+          case 1:
+            return (<TopPaidVar1 data={chartData}></TopPaidVar1>);
+          default: 
+            return (<TopPaidVar2 data={chartData}></TopPaidVar2>);
         }
       default:
         return (<DroughtVar1 data={chartData}></DroughtVar1>);

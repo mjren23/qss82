@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Bar, CartesianGrid, XAxis, YAxis, BarChart, Label, Legend } from 'recharts';
-import CustomAxisTick from './CustomAxisTick';
 
-function ResponseTimesVar1(props) {
+function ResponseTimesVar5(props) {
   const data = props.data;
   var clean = [];
   if (data != null) {
@@ -16,9 +15,8 @@ function ResponseTimesVar1(props) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
-    return minutes.toString() + ":" + seconds.toString().padStart(2, '0'); 
+    return minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0'); 
   }
-  
   
   return (
     <div>
@@ -26,17 +24,17 @@ function ResponseTimesVar1(props) {
         Response times by category, Boulder CO Fire Department  
       </div>
       <BarChart width={1200} height={400} data={clean} margin={{ top: 10, right: 30, left: 100, bottom: 20 }} >
-        <CartesianGrid></CartesianGrid>
+        <CartesianGrid fill="#d6d6d6" horizontal={false} vertical={false} ></CartesianGrid>
         <XAxis dataKey="year" interval={0} />
-        <YAxis dataKey="time" type="number" domain={[0, 800]} tickCount={6} tickFormatter={time => formatTime(time)}>
+        <YAxis dataKey="time" type="number" domain={[0, 840]} ticks={[0, 120, 240, 360, 480, 600, 720, 840 ]} tickFormatter={time => formatTime(time)}>
           <Label value="Minutes" position='insideLeft' offset={-20} angle='-90' style={{ textAnchor: 'middle' }}/>
         </YAxis>
-        <Bar dataKey="Alarm Handling" fill="#8884d8" />
-        <Bar dataKey="Turnout Time" fill="#323ca8" />
-        <Bar dataKey="First Arriving Travel Time" fill="#ab2b31" />
-        <Bar dataKey="ERF Travel Time" fill="#7da82c" />
-        <Bar dataKey="First Arriving Total Time" fill="#bd710d" />
-        <Bar dataKey="ERF Total Time" fill="#27a3c2" />
+        <Bar dataKey="Alarm Handling" fill="#f28a3a" />
+        <Bar dataKey="Turnout Time" fill="#c41a1a" />
+        <Bar dataKey="First Arriving Travel Time" fill="#fad96e" />
+        <Bar dataKey="ERF Travel Time" fill="#7a0420" />
+        <Bar dataKey="First Arriving Total Time" fill="#0a8494" />
+        <Bar dataKey="ERF Total Time" fill="#0c375e" />
         <Legend></Legend>
       </BarChart>
     </div>
@@ -45,4 +43,4 @@ function ResponseTimesVar1(props) {
 }
 
 
-export default ResponseTimesVar1;
+export default ResponseTimesVar5;
