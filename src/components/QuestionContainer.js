@@ -12,6 +12,7 @@ function QuestionContainer(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const updateAnswer = (answer) => {
+    console.log("setting answer to", answer);
     setSelectedAnswer(answer);
     onChange(answer);
   }

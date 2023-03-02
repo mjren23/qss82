@@ -135,7 +135,7 @@ function ChartTesting(props) {
 
   return(
     <div className="ChartTestingContainer">
-      {/* <DroughtVar1 data={droughtData}></DroughtVar1>
+      <DroughtVar1 data={droughtData}></DroughtVar1>
       <DroughtVar2 data={droughtData}></DroughtVar2>
       <DroughtVar3 data={droughtData}></DroughtVar3>
       <Soccer2017Var1 data={soccerData}></Soccer2017Var1>
@@ -149,7 +149,7 @@ function ChartTesting(props) {
       <ResponseTimesVar3 data={fireData}></ResponseTimesVar3>
       <ResponseTimesVar4 data={fireData}></ResponseTimesVar4>
       <ResponseTimesVar5 data={fireData}></ResponseTimesVar5>
-      <TopPaidVar1 data={topPaidData}></TopPaidVar1> */}
+      <TopPaidVar1 data={topPaidData}></TopPaidVar1>
       <TopPaidVar2 data={topPaidData}></TopPaidVar2>
     </div>
   );

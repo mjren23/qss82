@@ -76,6 +76,7 @@ function VisualizationContainer(props) {
   }, [currentQuestion]);
 
   const onChange = (answer) => {
+    console.log("in viz container, answer ", answer);
     setResponse(answer);
   }
 
@@ -97,8 +98,11 @@ function VisualizationContainer(props) {
     // submit to firebase db 
     var responseDocRef = doc(db, currentQuestionVariant.saveResponsePath);
 
-    if (askFollowUp) {
+    console.log("saving to", currentQuestionVariant.saveResponsePath);
+
+    if (currentQuestionText.includes("Think back")) {
       responseDocRef = doc(db, "responses/followUp/var_" + currentQuestionVariant.variantId + "/responseCounts");
+      console.log("inside here");
     }
     await updateDoc(responseDocRef, {
       [response]: increment(1),
