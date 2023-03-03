@@ -49,6 +49,13 @@ function VisualizationContainer(props) {
   }, [props.questions]);
 
   useEffect(() => {
+    const doneValue = localStorage.getItem("doneValue");
+    
+    if (doneValue) {
+      setNoMoreQuestions(true);
+      return;
+    }
+
     if (unseenQuestions.current == null) {
       return;
     }
@@ -250,6 +257,12 @@ function VisualizationContainer(props) {
   }
 
   if (noMoreQuestions) {
+    const doneValue = localStorage.getItem("completed");
+
+    if (!doneValue) {
+      localStorage.setItem("doneValue", "1");
+    }
+
     return (
       <div className="VisualizationContainer">
         You've answered all our questions!
