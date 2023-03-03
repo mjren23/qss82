@@ -16,6 +16,8 @@ import QuestionContainer from './QuestionContainer';
 import questions from '../data/questions.json';
 import Soccer2017Var3 from './charts/Soccer2017Var3';
 import Soccer2017Var4 from './charts/Soccer2017Var4';
+import Soccer2017Var5 from './charts/Soccer2017Var5';
+import Soccer2017Var6 from './charts/Soccer2017Var6';
 import ResponseTimesVar1 from './charts/ResponseTimesVar1';
 import ResponseTimesVar2 from './charts/ResponseTimesVar2';
 import ResponseTimesVar3 from './charts/ResponseTimesVar3';
@@ -23,6 +25,7 @@ import ResponseTimesVar4 from './charts/ResponseTimesVar4';
 import ResponseTimesVar5 from './charts/ResponseTimesVar5';
 import TopPaidVar1 from './charts/TopPaidVar1';
 import TopPaidVar2 from './charts/TopPaidVar2';
+
 
 
 
@@ -142,6 +145,8 @@ function ChartTesting(props) {
       <Soccer2017Var2 data={soccerData}></Soccer2017Var2>
       <Soccer2017Var3 data={soccerData}></Soccer2017Var3>
       <Soccer2017Var4 data={soccerData}></Soccer2017Var4>
+      <Soccer2017Var5 data={soccerData}></Soccer2017Var5>
+      <Soccer2017Var6 data={soccerData}></Soccer2017Var6>
       <SoccerVar1 data={positionData}></SoccerVar1>
       <SoccerVar2 data={positionData}></SoccerVar2>
       <ResponseTimesVar1 data={fireData}></ResponseTimesVar1>

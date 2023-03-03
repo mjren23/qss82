@@ -18,11 +18,11 @@ function TopPaidVar1(props) {
         <YAxis dataKey="base_salary" type="number" domain={[0, 8000000]} tickFormatter={salary => salaryFormatter(salary)}>
           <Label value="Salary" position='insideLeft' offset={-50} angle='-90' style={{ textAnchor: 'middle' }}/>
         </YAxis>
-        <Line type="monotone" stroke="#f0244d" dataKey="Landon Donovan" dot={{ strokeWidth: 2 }}/>
-        <Line type="monotone" stroke="#00244d" dataKey="Federico Higuain" dot={{ strokeWidth: 2 }}/>
-        <Line type="monotone" stroke="#3f34bf" dataKey="David Beckham" dot={{ strokeWidth: 2 }}/>
-        <Line type="monotone" stroke="#28c738" dataKey="Robbie Keane" dot={{ strokeWidth: 2 }}/> 
-        <Line type="monotone" stroke="#eda218" dataKey="Juan Pablo Angel" dot={{ strokeWidth: 2 }}/>
+        <Line type="monotone" stroke="#f0244d" dataKey="Landon Donovan" dot={false}/>
+        <Line type="monotone" stroke="#00244d" dataKey="Federico Higuain" dot={false}/>
+        <Line type="monotone" stroke="#3f34bf" dataKey="David Beckham" dot={false}/>
+        <Line type="monotone" stroke="#28c738" dataKey="Robbie Keane" dot={false}/> 
+        <Line type="monotone" stroke="#eda218" dataKey="Juan Pablo Angel" dot={false}/>
         <Legend></Legend>
         <Tooltip></Tooltip>
       </LineChart>

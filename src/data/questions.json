@@ -81,6 +81,16 @@
         "variantId": 4,
         "saveResponsePath": "responses/soccer_2017/var_4/responseCounts",
         "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 5,
+        "saveResponsePath": "responses/soccer_2017/var_5/responseCounts",
+        "saveInteractionsPath": ""
+      },
+      {
+        "variantId": 6,
+        "saveResponsePath": "responses/soccer_2017/var_6/responseCounts",
+        "saveInteractionsPath": ""
       }
     ]
   },

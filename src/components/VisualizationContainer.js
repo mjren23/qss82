@@ -22,6 +22,8 @@ import ResponseTimesVar3 from './charts/ResponseTimesVar3';
 import ResponseTimesVar4 from './charts/ResponseTimesVar4';
 import TopPaidVar1 from './charts/TopPaidVar1';
 import TopPaidVar2 from './charts/TopPaidVar2';
+import Soccer2017Var5 from './charts/Soccer2017Var5';
+import Soccer2017Var6 from './charts/Soccer2017Var6';
 
 
 
@@ -193,9 +195,13 @@ function VisualizationContainer(props) {
           case 2:
             return (<Soccer2017Var2 data={chartData}></Soccer2017Var2>);
           case 3:
-              return (<Soccer2017Var3 data={chartData}></Soccer2017Var3>);
+            return (<Soccer2017Var3 data={chartData}></Soccer2017Var3>);
           case 4:
-              return (<Soccer2017Var4 data={chartData}></Soccer2017Var4>);
+            return (<Soccer2017Var4 data={chartData}></Soccer2017Var4>);
+          case 5:
+            return (<Soccer2017Var5 data={chartData}></Soccer2017Var5>);
+          case 6:
+            return (<Soccer2017Var6 data={chartData}></Soccer2017Var6>);
           default: 
             return (<Soccer2017Var1 data={chartData}></Soccer2017Var1>);
       }
