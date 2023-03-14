@@ -15,7 +15,7 @@ function DroughtVar2(props) {
   return (
     <div>
       <div style={{"textAlign": "center", "fontSize": "larger"}}>
-         Percentage of U.S. land in status D3 or D4 drought 
+        Percentage of U.S. land in status D3 or D4 drought by year and month
       </div>
       <AreaChart width={1000} height={400} data={data} margin={{ top: 10, right: 30, left: 30, bottom: 60 }}>
         <defs>

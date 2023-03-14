@@ -21,7 +21,7 @@ function SoccerVar1(props) {
   return (
     <div>
       <div className="graph-title" style={{"textAlign": "center", "fontSize": "larger", "color": "#4f4f4f", "marginLeft": "10%" }}>
-        Major League Soccer salaries by position 
+        Average Major League Soccer salaries by position 
       </div>
       <ScatterChart width={1000} height={500} margin={{ top: 10, right: 50, left: 50, bottom: 20 }}>
         <CartesianGrid strokeDasharray="3 3" />
